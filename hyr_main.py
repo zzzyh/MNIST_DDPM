@@ -11,6 +11,7 @@ def forward_process(data, T, betas):
         mu = data * np.sqrt(1 - beta_t)
         std = np.sqrt(beta_t)
         data = mu + std * np.random.randn(data.shape[0], data.shape[1]) # data ~ N(mu, std)
+    return data
 
 
 def main():
@@ -28,7 +29,13 @@ def main():
     # start forward diffusion
     T = 40
     betas = np.linspace(1e-4, 1e-2, T)
-    forward_process(data, T, betas)
+    xT = forward_process(data, T, betas)
+    # plot the forward diffusion result
+    plt.figure(figsize=(10, 10))
+    plt.scatter(xT[:, 0], xT[:, 1])
+    plt.xlim([-2, 2])
+    plt.ylim([-2, 2])
+    plt.show()
 
 
 if __name__== '__main__':
