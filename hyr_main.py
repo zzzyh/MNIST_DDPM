@@ -1,4 +1,5 @@
-# This is a script for training and testing the DDPM model on MNIST dataset.
+# This is a script for training and testing the unsupervised diffusion model
+#
 
 import numpy as np
 import matplotlib.pyplot as plt
